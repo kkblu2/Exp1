@@ -1,0 +1,35 @@
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+
+            steps {
+
+                git branch: 'master', url: 'https://github.com/kkblu2/Exp1.git'
+
+            }
+
+        }
+
+        stage('Deploy') {
+
+            steps {
+
+                bat '''
+
+                    mkdir "C:/xampp/htdocs/test"
+
+                    copy *.html "C:/xampp/htdocs/test"
+
+                '''
+
+            }
+
+        }
+
+    }
+
+}
